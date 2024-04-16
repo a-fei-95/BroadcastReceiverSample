@@ -56,10 +56,23 @@ class MainActivity : ComponentActivity() {
                         Button(onClick = { onSendBroadcastEvent()} ) {
                             Text(text = "Send Broadcast Event")
                         }
+                        Button(onClick = { onStartActivitySample() }) {
+                            Text(text = "Start Activity Sample Project")
+                        }
                     }
                 }
             }
         }
+    }
+
+    private fun onStartActivitySample() {
+        val textMessage = "Hello Activity Sample!"
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, textMessage)
+        }
+        startActivity(sendIntent)
     }
 
     override fun onDestroy() {
